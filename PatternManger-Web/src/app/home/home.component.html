@@ -1,0 +1,17 @@
+<div [ngClass]="{loggedIn: loggedIn}">
+  <mat-toolbar class="accent">
+    <app-sidebar></app-sidebar>
+    <span class="title">{{title}}</span>
+    <button mat-icon-button>
+      <mat-icon class="accent" [routerLink]="['/account']" routerLinkActive="router-link-active">account_circle</mat-icon>
+    </button>
+    <div>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </mat-toolbar>
+</div>
+<div class="content-body">
+  <router-outlet (loggingIn)="logIn($event)"></router-outlet>
+</div>
+  
+  

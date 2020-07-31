@@ -1,0 +1,14 @@
+@import '../../scss/variables';
+.dashboard-tile {
+    display: inline-grid;
+    height: 35vh;
+    width: 35vw;
+    margin: 1rem;
+    border: black solid 2px;
+    border-radius: 10px;
+    background-color: $primary-color;
+}
+.tile-label{
+    display: block;
+    margin: auto;
+}

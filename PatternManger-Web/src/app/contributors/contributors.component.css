@@ -1,0 +1,23 @@
+.designer-result{
+    position: relative;
+    display: inline-grid;
+    border: solid 1px;
+    margin: 10px;
+    width: 200px;
+    max-width: 40vw;
+    
+    align-items: center;
+}
+.designer-image{
+    width: 180px;
+    height: 250px;
+    margin: auto;
+    max-width: calc(40vw - 20px);
+}
+.designer-info{
+    overflow: hidden;
+    margin: auto;
+}
+.designer-search{
+    display: inline-flex;
+}

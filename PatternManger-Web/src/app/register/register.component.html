@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="register-overlay">
+    <form #registerForm="ngForm" (ngSubmit)="register()" class="register">
+      <h1 class="form-header">{{title}}</h1>
+      <div class="form-section">
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" [(ngModel)]="model.firstname" placeholder="Jane">
+      </div>
+      <div class="form-section">
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" [(ngModel)]="model.lastname" placeholder="Doe">
+      </div>
+      <div class="form-section">
+        <label for="email">Email</label>
+        <input type="email" name="email" [(ngModel)]="model.email" placeholder="janedoe@example.com">
+      </div>
+      <div class="form-section">
+        <label for="username">Username</label>
+        <input type="text" name="username" [(ngModel)]="model.username" placeholder="jdoe123">
+      </div>
+      <div class="form-section">
+        <label for="password">Password</label>
+        <input type="password" name="password" [(ngModel)]="model.password" placeholder="********">
+      </div>
+      <div>
+        <button class="btn" type="submit">Register</button>
+        <button class="btn" type="button">Cancel</button>
+      </div>  
+    </form>
+  </div>
+</div>

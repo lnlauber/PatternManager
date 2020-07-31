@@ -1,0 +1,43 @@
+@import '../../scss/variables';
+.about{
+    width: 85%;
+    background-color: $accent-color;
+    display: grid;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.userfullname{
+    font-size: 3rem;
+    line-height: 3rem;
+}
+.profilePhoto{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    height: 50vh;
+    position: relative;
+    padding: 1rem;
+}
+img{
+    position: relative;
+    max-width: 50vw;
+    max-height: 50vh;
+}
+.about-me{
+    grid-column-start: 3;
+    grid-column-end: 6;
+    margin: auto;
+    padding: 1rem;
+}
+table{
+    background-color: white;
+    width: 80%;
+    border-radius: 1rem;
+    margin: auto;
+}
+tr{
+    height: 1.5rem;
+}
+td{
+    text-align: center;
+}

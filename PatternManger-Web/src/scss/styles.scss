@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import './variables';
+@import '../app/sidebar/sidebar.component.scss';
+@import '../app/home/home.component.scss';
+@import '../app/login/login.component.scss';
+@import '../app/register/register.component.scss';
+@import '../app/patterns/patterns.component.scss';
+@import '../app/dashboard/dashboard.component.scss';
+@import '../../node_modules/alertifyjs/build/css/alertify.min.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+.content-body{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: calc(100vh - 64px);
+    background-color: $secondary-color;
+    overflow-y: scroll;
+}
+.gallery{
+    text-align: center;
+}
+@media (min-width: $sm-break){
+    .content-body{
+        width: 85vw;
+    }
+}
+@media (max-width: $sm-break){
+    .content-body{
+        width: 100vw;
+    }
+}
+mat-toolbar{
+    min-height: 64px;
+    max-height: 64px;
+}
