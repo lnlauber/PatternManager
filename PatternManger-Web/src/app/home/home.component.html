@@ -2,11 +2,13 @@
   <mat-toolbar class="accent">
     <app-sidebar></app-sidebar>
     <span class="title">{{title}}</span>
-    <button mat-icon-button>
-      <mat-icon class="accent" [routerLink]="['/account']" routerLinkActive="router-link-active">account_circle</mat-icon>
-    </button>
     <div>
-      <button (click)="logout()">Logout</button>
+      <button class="btn account-btn" mat-icon-button>
+        My Account
+      </button>
+    </div>
+    <div>
+      <button class="btn logout-btn"  (click)="logout()">Logout</button>
     </div>
   </mat-toolbar>
 </div>

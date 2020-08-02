@@ -3,7 +3,13 @@
 .accent{
     background-color: $primary-color;
 }
-
+.logout-btn{
+    margin: auto;
+}
+.account-btn{
+    margin: auto;
+    margin-right: .5rem;
+}
 .title{
     margin: 0 auto;
     color: white;
