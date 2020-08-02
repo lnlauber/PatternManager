@@ -12,6 +12,7 @@ namespace PatternManager.API.Services.UserService
 
         Task<UserDto> Register(UserForRegisterDto userDto); 
         Task<UserForProfile> GetCurrentUser(string username);
+        Task<UserDto> GetUser(string username);
         Task<IEnumerable<UserForProfile>> GetUsers();
         Task<IEnumerable<UserForProfile>> SearchUsers(string search);
     }

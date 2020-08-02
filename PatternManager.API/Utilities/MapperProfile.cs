@@ -3,6 +3,7 @@ using PatternManager.API.Services.UserService.Dtos;
 using PatternManager.API.Data.Models;
 using System.Linq;
 using PatternManager.API.Services.PhotoService.Dtos;
+using PatternManager.API.Services.PatternService.Dtos;
 
 namespace PatternManager.API.Utilities
 {
@@ -10,6 +11,7 @@ namespace PatternManager.API.Utilities
     {
         public MapperProfile()
         {
+            CreateMap<UserDto, User>();
             CreateMap<User, UserDto>();
             CreateMap<User, UserForLoginDto>();
             CreateMap<User, UserForRegisterDto>();
@@ -18,6 +20,10 @@ namespace PatternManager.API.Utilities
             .ForMember(dest => dest.Joined, src => src.MapFrom(s => s.DateJoined.ToShortDateString()))
             .ForMember(dest => dest.ProfilePicture, src => src.MapFrom(s => s.Photos.FirstOrDefault(p => p.IsProfile == true)));
             CreateMap<Photo, PhotoDto>();
+            CreateMap<Pattern, PatternDto>()
+            .ForMember(dest => dest.Contributer, opt => opt.Ignore());
+            CreateMap<PatternDto, Pattern>()
+            .ForMember(dest => dest.Contributer, opt => opt.Ignore());
         }
     }
 }

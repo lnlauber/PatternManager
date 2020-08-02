@@ -58,6 +58,10 @@ namespace PatternManager.API.Services.UserService
             var users = await _uow.Get<User>().Include(p => p.Photos).ToListAsync();
             return users.Select(u => _mapper.Map<UserForProfile>(u));
         }
+        public async Task<UserDto> GetUser(string username){
+            var user = await _uow.Get<User>().FirstOrDefaultAsync(u => u.Username == username);
+            return _mapper.Map<UserDto>(user);
+        }
         public async Task<IEnumerable<UserForProfile>> SearchUsers(string search){
             var split = search.Split(' ');
             var users = await _uow.Get<User>().ToListAsync();

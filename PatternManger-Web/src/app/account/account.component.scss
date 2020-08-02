@@ -1,7 +1,7 @@
 @import '../../scss/variables';
 .about{
     width: 85%;
-    background-color: $accent-color;
+    background-color: $primary-color;
     display: grid;
     margin: auto;
     margin-top: 1rem;
@@ -27,6 +27,7 @@ img{
     grid-column-start: 3;
     grid-column-end: 6;
     margin: auto;
+    margin-top: 1rem;
     padding: 1rem;
 }
 table{

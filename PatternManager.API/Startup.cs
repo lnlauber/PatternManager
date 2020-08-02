@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using PatternManager.API.Services.PatternService;
+using AutoMapper;
 
 namespace PatternManager.API
 {

@@ -7,8 +7,8 @@ using PatternManager.API.Services.PatternService.Dtos;
 namespace PatternManager.API.Controllers
 {
     [Authorize]
-    [Route("[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class PatternsController : ControllerBase
     {
         private readonly IPatternService _patternService;
@@ -17,13 +17,12 @@ namespace PatternManager.API.Controllers
             _patternService = patternService;
         }
         [HttpGet]
-        [Route("/patterns")]
         public async Task<IActionResult> GetAllPatterns(){
             var patterns = await _patternService.GetPatternRecords();
             return Ok(patterns);
         }
         [HttpPost]
-        [Route("/create")]
+        [Route("create")]
         public async Task<IActionResult> CreatePattern(PatternDto pattern){
             await _patternService.CreatePatternRecord(pattern);
             return Ok();

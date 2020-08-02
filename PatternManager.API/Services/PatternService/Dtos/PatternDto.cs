@@ -13,6 +13,6 @@ namespace PatternManager.API.Services.PatternService.Dtos
         public string Description { get; set; }
         public DateTime DateAdded { get; set; }
         [Required]
-        public User Contributer { get; set; }  
+        public string Contributer { get; set; }  
     }
 }

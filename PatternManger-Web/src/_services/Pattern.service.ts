@@ -1,13 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Pattern } from './../models/pattern';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    Authorization: 'Bearer ' + localStorage.getItem('token')
-  })
-};
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +14,13 @@ export class PatternService {
   constructor(private http: HttpClient) { }
 
   create(model: Pattern){
-    return this.http.post(this.baseUrl + 'create', model, httpOptions);
+    console.log(this.baseUrl);
+    console.log(model);
+    return this.http.post(this.baseUrl + 'create', model);
   }
 
   get(){
-    return this.http.get(this.baseUrl, httpOptions);
+    return this.http.get(this.baseUrl);
   }
 
 }

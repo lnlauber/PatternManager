@@ -3,7 +3,7 @@ import { User } from './user';
 export interface Pattern {
     url: string;
     title: string;
-    contributer: User;
+    contributer: string;
     description?: string;
     id?: number;
 

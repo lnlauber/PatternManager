@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using PatternManager.API.Data.Interfaces;
 using PatternManager.API.Data.Models;
 using PatternManager.API.Services.PatternService.Dtos;
+using PatternManager.API.Services.UserService;
+using PatternManager.API.Services.UserService;
+using PatternManager.API.Utilities;
 
 namespace PatternManager.API.Services.PatternService
 {
@@ -13,14 +16,17 @@ namespace PatternManager.API.Services.PatternService
     {
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
-        public PatternService(IUnitOfWork uow, IMapper mapper)
+        private readonly IUserService _userService;
+        public PatternService(IUnitOfWork uow, IUserService userService)
         {
             _uow = uow;
-            _mapper = mapper;
+            _mapper = new MapperConfiguration(cfg => cfg.AddProfile<MapperProfile>()).CreateMapper();
+            _userService = userService;
         }
-
         public async Task CreatePatternRecord(PatternDto pattern){
+            var user = await _uow.Get<User>().FirstOrDefaultAsync(u => u.Username == pattern.Contributer);
             Pattern patternToCreate = _mapper.Map<Pattern>(pattern);
+            patternToCreate.Contributer = user;
             _uow.Add(patternToCreate);
             await _uow.CommitAsync();
                         

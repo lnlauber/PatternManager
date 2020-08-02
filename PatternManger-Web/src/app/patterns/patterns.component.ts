@@ -2,6 +2,7 @@ import { AlertifyService } from './../../_services/Alertify.service';
 import { PatternService } from './../../_services/Pattern.service';
 import { Pattern } from './../../models/pattern';
 import { Component, OnInit } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-patterns',
@@ -11,9 +12,17 @@ import { Component, OnInit } from '@angular/core';
 export class PatternsComponent implements OnInit {
 
   creatingPattern: boolean;
-  model: Pattern;
+  user = this.jwtHelper.decodeToken(localStorage.getItem('token')).nameid;
+  model: Pattern = {
+    url: '',
+    title: '',
+    contributer: this.user,
+    description: '',
+  };
   patterns: Pattern[];
-  constructor(private patternService: PatternService, private alertify: AlertifyService) { }
+  constructor(private patternService: PatternService,
+              private alertify: AlertifyService,
+              private jwtHelper: JwtHelperService) { }
 
   ngOnInit() {
     this.creatingPattern = false;
@@ -30,6 +39,8 @@ export class PatternsComponent implements OnInit {
     this.creatingPattern = !this.creatingPattern;
   }
   submitPattern(){
+    console.log(this.model);
+
     this.patternService.create(this.model).subscribe(() => {
       this.alertify.success('Pattern Created Successfully.');
     }, error => {
