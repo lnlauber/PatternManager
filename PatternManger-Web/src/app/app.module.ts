@@ -1,3 +1,9 @@
+import { PatternService } from './../_services/Pattern.service';
+import { UserService } from './../_services/User.service';
+import { AuthGuard } from './../_guards/auth.guard';
+import { AlertifyService } from './../_services/Alertify.service';
+import { AuthService } from './../_services/Auth.service';
+import { ErrorInterceptor, ErrorInterceptorProvider } from './../_services/error.interceptor';
 import { appRoutes } from './routes';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -52,12 +58,23 @@ export function tokenGetter() {
       HttpClientModule,
       RouterModule,
       CommonModule,
-      RouterModule.forRoot(appRoutes)
-
+      RouterModule.forRoot(appRoutes),
+      JwtModule.forRoot({
+         config: {
+            tokenGetter: tokenGetter,
+            allowedDomains: ['localhost:5000'],
+            disallowedRoutes: ['localhost:5000/auth'],
+         },
+      }),
    ],
    providers: [
-      { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-      JwtHelperService
+      ErrorInterceptorProvider,
+      AuthService,
+      AlertifyService,
+      AuthGuard,
+      UserService,
+      PatternService,
+      
    ],
    bootstrap: [
       AppComponent
