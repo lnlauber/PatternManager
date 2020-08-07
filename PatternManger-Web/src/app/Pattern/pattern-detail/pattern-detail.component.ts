@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-pattern-detail',
   templateUrl: './pattern-detail.component.html',
-  styleUrls: ['./pattern-detail.component.css']
+  styleUrls: ['./pattern-detail.component.scss']
 })
 export class PatternDetailComponent implements OnInit {
 

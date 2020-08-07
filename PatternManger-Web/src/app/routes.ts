@@ -29,6 +29,6 @@ export const appRoutes: Routes = [
     },
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
-    {path: '', component: PatternsComponent},
-    {path: '**', redirectTo: '', pathMatch: 'full'}
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: '**', redirectTo: 'login', pathMatch: 'full'}
 ];

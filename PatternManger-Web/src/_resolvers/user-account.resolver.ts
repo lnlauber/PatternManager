@@ -15,6 +15,8 @@ export class UserAccountResolver implements Resolve<User> {
     resolve(route: ActivatedRouteSnapshot): Observable<User> {
         return this.userService.getCurrentUser().pipe(
             catchError( error => {
+                this.alertify.error(error);
+                console.log(error);
                 this.alertify.error('Error loading profile. Please sign in again.');
                 localStorage.removeItem('token');
                 this.router.navigateByUrl('/');

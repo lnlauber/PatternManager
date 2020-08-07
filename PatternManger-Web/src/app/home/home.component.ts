@@ -1,3 +1,4 @@
+import { logging } from 'protractor';
 import { Router } from '@angular/router';
 import { AlertifyService } from './../../_services/Alertify.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,19 +11,26 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   title = 'Pattern Manager';
   loggedIn = !!localStorage.getItem('token');
-  constructor(private alertify: AlertifyService, private router: Router) { }
+  route: string;
+  constructor(private alertify: AlertifyService,
+              private router: Router) {
+                this.route = router.url;
+                console.log(this.route);
+                
+              }
 
   ngOnInit() {
+    this.loggedIn = !!localStorage.getItem('token');
   }
 
-  logIn(loggedIn: boolean){
-    this.loggedIn = loggedIn;
+  logIn(l: boolean){
+    this.loggedIn = l;
   }
   logout(){
     localStorage.removeItem('token');
     this.alertify.message('Successfully logged out.');
     this.loggedIn = false;
-    window.location.reload();
+    this.router.navigate(['/login']);
   }
 
 }

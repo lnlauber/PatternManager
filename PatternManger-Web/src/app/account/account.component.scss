@@ -69,11 +69,11 @@ td{
     position: absolute;
     top: 1rem;
     right: 7rem;
-    opacity: 75%;
+    opacity: .75;
 }
 .edit-profile:hover{
     transform: scale(1.1);
-    opacity: 100%;
+    opacity: 1.00;
 }
 .open-upload{
     background-color: whitesmoke;
@@ -85,9 +85,9 @@ td{
     position: absolute;
     top: 1rem;
     left: 7rem;
-    opacity: 75%;
+    opacity: .75;
 }
 .open-upload:hover{
     transform: scale(1.1);
-    opacity: 100%;
+    opacity: 1.0;
 }

@@ -6,7 +6,7 @@ import { User } from 'src/models/user';
 @Component({
   selector: 'app-contributors',
   templateUrl: './contributors.component.html',
-  styleUrls: ['./contributors.component.css']
+  styleUrls: ['./contributors.component.scss']
 })
 export class contributorsComponent implements OnInit {
   users: User[];

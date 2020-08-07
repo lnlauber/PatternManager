@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-new-pattern',
   templateUrl: './new-pattern.component.html',
-  styleUrls: ['./new-pattern.component.css']
+  styleUrls: ['./new-pattern.component.scss']
 })
 export class NewPatternComponent implements OnInit {
 

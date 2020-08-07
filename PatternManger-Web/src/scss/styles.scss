@@ -8,6 +8,13 @@
 @import '../app/register/register.component.scss';
 @import '../app/pattern/patterns/patterns.component.scss';
 @import '../app/dashboard/dashboard.component.scss';
+@import '../app/account/account.component.scss';
+@import '../app/contributors/contributors.component.scss';
+@import '../app/contributors/contributor-profile/contributor-profile.component.scss';
+@import '../app/home/home.component.scss';
+@import '../app/Pattern/new-pattern/new-pattern.component.scss';
+@import '../app/Pattern/pattern-detail/pattern-detail.component.scss';
+@import '../app//photouploadmodal/photouploadmodal.component.scss';
 @import '../../node_modules/alertifyjs/build/css/alertify.min.css';
 
 html, body { height: 100%; }

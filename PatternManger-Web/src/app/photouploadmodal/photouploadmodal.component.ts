@@ -9,7 +9,7 @@ import { Pattern } from 'src/models/pattern';
 @Component({
   selector: 'app-photouploadmodal',
   templateUrl: './photouploadmodal.component.html',
-  styleUrls: ['./photouploadmodal.component.css']
+  styleUrls: ['./photouploadmodal.component.scss']
 })
 export class PhotouploadmodalComponent implements OnInit {
 
@@ -27,14 +27,25 @@ export class PhotouploadmodalComponent implements OnInit {
               private alertify: AlertifyService) { }
 
   ngOnInit() {
-    this.model = {
-      url: '',
-      description: '',
-      isPattern: this.patternPhoto,
-      isProfile: this.profilePhoto,
-      patternId: this.pattern?.id,
-      username: this.user,
-    };
+    if (this.pattern?.id == undefined){
+      this.model = {
+        url: '',
+        description: '',
+        isPattern: this.patternPhoto,
+        isProfile: this.profilePhoto,
+        username: this.user,
+      };
+    }
+    else{
+      this.model = {
+        url: '',
+        description: '',
+        isPattern: this.patternPhoto,
+        isProfile: this.profilePhoto,
+        patternId: this.pattern?.id,
+        username: this.user,
+      };
+    }
     console.log(this.patternPhoto);
     console.log(this.pattern);
     console.log(this.pattern?.id);

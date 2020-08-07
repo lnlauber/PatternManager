@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-contributor-profile',
   templateUrl: './contributor-profile.component.html',
-  styleUrls: ['./contributor-profile.component.css']
+  styleUrls: ['./contributor-profile.component.scss']
 })
 export class ContributorProfileComponent implements OnInit {
 

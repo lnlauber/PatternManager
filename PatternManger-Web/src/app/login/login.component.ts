@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
   login(){
     this.authService.login(this.model).subscribe(next => {
       this.alertify.success('Logged in successfully');
+      this.signInOrOut.emit(true);
     }, error => {
       this.alertify.error(error);
     }, () => {
-      this.router.navigate(['/account']);
-      this.signInOrOut.emit(true);
+      this.router.navigate(['/home/account']);
     });
   }
   register(){

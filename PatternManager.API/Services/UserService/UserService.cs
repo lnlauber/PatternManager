@@ -51,7 +51,9 @@ namespace PatternManager.API.Services.UserService
         {
             var user = await _uow.Get<User>().Include(p => p.Photos).FirstOrDefaultAsync(u => u.Username == username);
             var userDto = _mapper.Map<UserForProfile>(user);
-            var url = userDto.ProfilePicture.Url;
+            if(userDto.ProfilePicture != null){
+                var url = userDto.ProfilePicture.Url;
+            }
             return userDto;
         }
 

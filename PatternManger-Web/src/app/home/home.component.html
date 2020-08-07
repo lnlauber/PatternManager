@@ -2,18 +2,20 @@
   <mat-toolbar class="accent">
     <app-sidebar></app-sidebar>
     <span class="title">{{title}}</span>
-    <div *ngIf="loggedIn">
+    <div *ngIf="route != '/login' && route != '/register'">
       <button class="btn account-btn">
         <a [routerLink]="['home/account']">My Account</a>
       </button>
     </div>
-    <div>
-      <button class="btn logout-btn"  (click)="logout()">Logout</button>
+    <div *ngIf="(route != '/login' && route != '/register')">
+      <div>
+        <button class="btn logout-btn"  (click)="logout()">Logout</button>
+      </div>
     </div>
   </mat-toolbar>
 </div>
 <div class="content-body">
-  <router-outlet (loggingIn)="logIn($event)"></router-outlet>
+  <router-outlet (signInOrOut)="logIn($event)"></router-outlet>
 </div>
   
   
