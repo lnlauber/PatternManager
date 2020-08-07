@@ -8,5 +8,6 @@ namespace PatternManager.API.Services.PatternService
     {
         Task CreatePatternRecord(PatternDto pattern);
         Task<IEnumerable<PatternDto>> GetPatternRecords();
+        Task<PatternDto> GetPattern(int id);
     }
 }

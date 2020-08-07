@@ -20,6 +20,7 @@ namespace PatternManager.API.Utilities
             .ForMember(dest => dest.Joined, src => src.MapFrom(s => s.DateJoined.ToShortDateString()))
             .ForMember(dest => dest.ProfilePicture, src => src.MapFrom(s => s.Photos.FirstOrDefault(p => p.IsProfile == true)));
             CreateMap<Photo, PhotoDto>();
+            CreateMap<PhotoDto, Photo>();
             CreateMap<Pattern, PatternDto>()
             .ForMember(dest => dest.Contributer, opt => opt.Ignore());
             CreateMap<PatternDto, Pattern>()

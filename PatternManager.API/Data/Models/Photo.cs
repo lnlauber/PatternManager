@@ -22,6 +22,6 @@ namespace PatternManager.API.Data.Models
         public string PublicId { get; set; }
         [Required]
         public User User { get; set; }
-        public Pattern Pattern { get; set; }
+        public Pattern? Pattern { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PatternManager.API.Migrations
 {
-    public partial class DatabaseInitialBuild : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,12 +29,18 @@ namespace PatternManager.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Url = table.Column<string>(nullable: true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Url = table.Column<string>(nullable: false),
                     Title = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),
-                    ContributerUsername = table.Column<string>(nullable: false)
+                    ContributerUsername = table.Column<string>(nullable: false),
+                    Category = table.Column<string>(nullable: true),
+                    YarnWeight = table.Column<byte>(nullable: false),
+                    HookSize = table.Column<float>(nullable: false),
+                    Language = table.Column<string>(nullable: true),
+                    Terminology = table.Column<string>(nullable: true),
+                    SkillLevel = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -52,7 +58,7 @@ namespace PatternManager.API.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Url = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     DateAdded = table.Column<DateTime>(nullable: false),

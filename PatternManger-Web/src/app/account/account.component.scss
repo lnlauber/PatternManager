@@ -1,11 +1,27 @@
 @import '../../scss/variables';
-.about{
+.about, .photo-upload{
     width: 85%;
-    background-color: $primary-color;
     display: grid;
     margin: auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+.close-upload{
+    background-color: whitesmoke;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    font-size: 1rem;
+    border: solid .5px;
+    border-radius: 50%;
+}
+.close-upload:hover{
+    transform: scale(1.25);
+    transition: all 0.4s ease;
+}
+.about {
+    background-color: $primary-color;
+
 }
 .userfullname{
     font-size: 3rem;
@@ -14,7 +30,8 @@
 .profilePhoto{
     grid-column-start: 1;
     grid-column-end: 2;
-    height: 50vh;
+    min-height: 100%;
+    max-height: 100%;
     position: relative;
     padding: 1rem;
 }
@@ -41,4 +58,36 @@ tr{
 }
 td{
     text-align: center;
+}
+.edit-profile{
+    background-color: whitesmoke;
+    border-radius: 15px;
+    height: 1.75rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding: auto;
+    position: absolute;
+    top: 1rem;
+    right: 7rem;
+    opacity: 75%;
+}
+.edit-profile:hover{
+    transform: scale(1.1);
+    opacity: 100%;
+}
+.open-upload{
+    background-color: whitesmoke;
+    border-radius: 15px;
+    height: 1.75rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding: auto;
+    position: absolute;
+    top: 1rem;
+    left: 7rem;
+    opacity: 75%;
+}
+.open-upload:hover{
+    transform: scale(1.1);
+    opacity: 100%;
 }

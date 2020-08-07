@@ -1,0 +1,25 @@
+<div class="filters">
+  <!-- <div class="search header-item">
+    <form action="">
+      <div>
+        <button class="pattern-search" type="submit" class="btn">Search</button>
+        <input class="pattern-search" type="text" name="patternSearch">
+      </div>
+    </form>
+  </div> -->
+  <app-new-pattern class="create-form header-item" *ngIf="creatingPattern" (cancelCreate) = "createPattern($event)"></app-new-pattern>
+  <div class="create-btn header-item">
+    <button class="btn" type="button" (click)="createPattern()">Add New Pattern</button>
+  </div>
+</div>
+
+<div class="gallery">
+  <div class="pattern-result" [routerLink]="['/home/patternDetails/', pattern.id]" routerLinkActive="router-link-active"  *ngFor="let pattern of patterns">
+      <img class="pattern-image" src="{{ pattern.mainPhotoUrl }}" alt="image">
+      <div class="pattern-details">
+        <h4>{{ pattern.title }}</h4>
+        <h5> Hook: {{ pattern.hookSize }}mm</h5>
+        <h5> Weight: {{ pattern.yarnWeight}} </h5>
+      </div>
+  </div>
+</div>

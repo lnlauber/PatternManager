@@ -1,4 +1,5 @@
 import { User } from './user';
+import { Photo } from './photo';
 
 export interface Pattern {
     url: string;
@@ -6,5 +7,13 @@ export interface Pattern {
     contributer: string;
     description?: string;
     id?: number;
+    category: string;
+    yarnWeight: number;
+    hookSize: number;
+    language?: string;
+    terminology?: string;
+    skillLevel?: string;
+    photos?: Photo[];
+    mainPhotoUrl?: string;
 
 }

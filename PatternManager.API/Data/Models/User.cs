@@ -17,9 +17,10 @@ namespace PatternManager.API.Data.Models
         public string Email { get; set; }
         [Required]
         public string PasswordHash { get; set; }
+        [Required]
         public DateTime DateJoined { get; set; }
         public string About { get; set; }
-        public ICollection<Photo> Photos { get; set; }
-        public ICollection<Pattern> Patterns { get; set; }
+        public virtual ICollection<Photo> Photos { get; set; }
+        public virtual ICollection<Pattern> Patterns { get; set; }
     }
 }

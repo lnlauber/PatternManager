@@ -9,18 +9,22 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PatternService {
-  baseUrl = environment.apiUrl + 'patterns/';
+  baseUrl = environment.apiUrl + 'api/';
 
   constructor(private http: HttpClient) { }
 
   create(model: Pattern){
     console.log(this.baseUrl);
     console.log(model);
-    return this.http.post(this.baseUrl + 'create', model);
+    return this.http.post(this.baseUrl + 'pattern/create', model);
   }
 
   get(){
-    return this.http.get(this.baseUrl);
+    return this.http.get(this.baseUrl + 'patterns');
+  }
+
+  getPattern(id: number){
+    return this.http.get(this.baseUrl + 'pattern/?id=' + id);
   }
 
 }

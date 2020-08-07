@@ -50,13 +50,16 @@ namespace PatternManager.API.Services.UserService
         public async Task<UserForProfile> GetCurrentUser(string username)
         {
             var user = await _uow.Get<User>().Include(p => p.Photos).FirstOrDefaultAsync(u => u.Username == username);
-            return _mapper.Map<UserForProfile>(user);
+            var userDto = _mapper.Map<UserForProfile>(user);
+            var url = userDto.ProfilePicture.Url;
+            return userDto;
         }
 
         public async Task<IEnumerable<UserForProfile>> GetUsers()
         {
             var users = await _uow.Get<User>().Include(p => p.Photos).ToListAsync();
-            return users.Select(u => _mapper.Map<UserForProfile>(u));
+            var dtos = users.Select(u => _mapper.Map<UserForProfile>(u));
+            return dtos;
         }
         public async Task<UserDto> GetUser(string username){
             var user = await _uow.Get<User>().FirstOrDefaultAsync(u => u.Username == username);
@@ -75,6 +78,15 @@ namespace PatternManager.API.Services.UserService
             }
             return users.Select(u => _mapper.Map<UserForProfile>(u));
         }
+
+        public async Task<UserForProfile> UpdateUser(UserForProfile edited){
+            var saved = await _uow.Get<User>().FirstOrDefaultAsync(s => s.Username == edited.Username);
+            saved.About = edited.About;
+            _uow.Update(saved);
+            await _uow.CommitAsync();
+            return edited;
+        }
+
         private static readonly Func<UserForRegisterDto, User> RegistrationProjection = user => new User{
             FirstName = user.FirstName,
             LastName = user.LastName,

@@ -22,13 +22,20 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-    this.authService.register(this.model).subscribe(() => {
-      this.alertify.success('Registered Successfully.');
-      this.router.navigate(['/login']);
-    }, error => {
-      this.alertify.error(error);
-    });
-    this.registeredEvent.emit(false);
+    console.log(this.model.password);
+    console.log(this.model.verifyPassword);
+    if (this.model.password === this.model.verifyPassword){
+      console.log('passwords matched');
+      this.authService.register(this.model).subscribe(() => {
+        this.alertify.success('Registered Successfully.');
+        this.router.navigate(['/login']);
+      }, error => {
+        this.alertify.error(error);
+      });
+      this.registeredEvent.emit(false);
+    } else {
+      this.alertify.error('Passwords do not match.');
+    }
   }
   cancel(){
     this.cancelEvent.emit(false);

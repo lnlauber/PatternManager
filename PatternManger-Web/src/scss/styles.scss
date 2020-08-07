@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-
+@import "~bootstrap/dist/css/bootstrap.css";
 @import './variables';
 @import '../app/sidebar/sidebar.component.scss';
 @import '../app/home/home.component.scss';
 @import '../app/login/login.component.scss';
 @import '../app/register/register.component.scss';
-@import '../app/patterns/patterns.component.scss';
+@import '../app/pattern/patterns/patterns.component.scss';
 @import '../app/dashboard/dashboard.component.scss';
 @import '../../node_modules/alertifyjs/build/css/alertify.min.css';
 

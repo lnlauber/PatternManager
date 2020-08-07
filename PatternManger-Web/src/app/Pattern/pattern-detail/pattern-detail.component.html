@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="photo-upload col-12" *ngIf="addingPhoto">
+    <div class="close-upload" (click)="addPattern(false)">X</div>
+    <app-photouploadmodal [profilePhoto]="false" [pattern]="pattern" [patternPhoto]="true"></app-photouploadmodal>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4 no-gutters">
+      <div class="add-photo-btn col-3" (click)="addPattern(true)">+ Add Photo</div>
+      <div class="pattern-image" *ngFor="let photo of pattern?.photos">
+      <img src="{{ photo?.url }}" alt="" >
+
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 no-gutters">
+      <div class="pattern-detail">
+        <div class="details">
+          <h1 class="pattern-title">Pattern Title</h1>
+          <label>Contributor:</label>
+          <p>{{ pattern.contributer }}</p>
+          <label>Category:</label>
+          <p>{{ pattern.category }}</p>
+          <label>Yarn Weight:</label>
+          <p>{{ pattern.yarnWeight }}</p>
+          <label>Hook Size:</label>
+          <p>{{pattern.hookSize}}mm</p>
+          <label>About This Pattern</label>
+          <p>{{ pattern.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2 no-gutters">
+      <div class="pt-3 actions">
+        <h1>Actions:</h1>
+        <a href="{{ pattern.url }}" target="_blank" class="get-pattern">Get Pattern</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,20 @@
 @import '../../scss/variables';
 .dashboard-tile {
-    display: inline-grid;
-    height: 35vh;
-    width: 35vw;
-    margin: 1rem;
-    border: black solid 2px;
-    border-radius: 10px;
-    background-color: $primary-color;
+    border: $primary-color solid 2px;
+    border-radius: .25rem;
+    background-color: whitesmoke;
+    margin-top: 3rem;
+    min-height: calc(100vh - calc(64px + 5rem));
+    max-height: calc(100vh - calc(64px + 5rem));
+    padding: 1rem;
+    overflow-y: scroll;
 }
 .tile-label{
     display: block;
     margin: auto;
+}
+.project{
+    border: $primary-color solid 2px;
+    border-radius: 1rem;
+    padding: .5rem;
 }

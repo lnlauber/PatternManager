@@ -1,0 +1,45 @@
+<div class="photo-upload-modal pt-2">
+  <div class="icon"></div>
+  <div class="row ml-4 pr-5 upload-div">
+    <div class="col-md-6">
+        <div ng2FileDrop
+          [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+          (fileOver)="fileOverBase($event)"
+          [uploader]="uploader"
+          class="well my-drop-zone">
+
+          <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+              <h2>Drag & Drop Files</h2>
+              <h4>or</h4>
+              <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+            </div>
+            <div class="col-4"></div>
+          </div>
+        </div>
+        <br/>
+    </div>
+
+    <div class="col-md-6" style="margin-bottom: 40px">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Size</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of uploader.queue">
+                <td><strong>{{ item?.file?.name }}</strong></td>
+                <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+            </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+  </div>
+</div>

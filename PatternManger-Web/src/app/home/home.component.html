@@ -2,9 +2,9 @@
   <mat-toolbar class="accent">
     <app-sidebar></app-sidebar>
     <span class="title">{{title}}</span>
-    <div>
-      <button class="btn account-btn" mat-icon-button>
-        My Account
+    <div *ngIf="loggedIn">
+      <button class="btn account-btn">
+        <a [routerLink]="['home/account']">My Account</a>
       </button>
     </div>
     <div>

@@ -6,5 +6,5 @@ export interface User {
     email: string;
     joined: string;
     about?: string;
-    profilePhotoUrl?: Photo;
+    profilePicture?: Photo;
 }

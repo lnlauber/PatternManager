@@ -10,5 +10,10 @@ namespace PatternManager.API.Services.PhotoService.Dtos
         public string Description { get; set; }
         public DateTime DateAdded { get; set; }
         public string PublicId { get; set; }
+        public string Username { get; set; }
+        public int PatternId { get; set; }
+        public bool IsProfile { get; set; }
+        public bool IsPattern { get; set; }
+        public bool IsMain { get; set; }
     }
 }

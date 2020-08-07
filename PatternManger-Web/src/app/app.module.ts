@@ -1,9 +1,16 @@
+import { ContributorProfileComponent } from './contributors/contributor-profile/contributor-profile.component';
+import { UserAccountResolver } from './../_resolvers/user-account.resolver';
+import { PatternDetailResolver } from './../_resolvers/patterndetails.resolver';
+import { UserProfileResolver } from './../_resolvers/user-profile.resolver';
+import { PhotouploadmodalComponent } from './photouploadmodal/photouploadmodal.component';
+import { NewPatternComponent } from './Pattern/new-pattern/new-pattern.component';
+import { PatternDetailComponent } from './Pattern/pattern-detail/pattern-detail.component';
 import { PatternService } from './../_services/Pattern.service';
 import { UserService } from './../_services/User.service';
 import { AuthGuard } from './../_guards/auth.guard';
 import { AlertifyService } from './../_services/Alertify.service';
 import { AuthService } from './../_services/Auth.service';
-import { ErrorInterceptor, ErrorInterceptorProvider } from './../_services/error.interceptor';
+import { ErrorInterceptorProvider } from './../_services/error.interceptor';
 import { appRoutes } from './routes';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,7 +28,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { PatternsComponent } from './patterns/patterns.component';
+import { PatternsComponent } from './Pattern/patterns/patterns.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountComponent } from './account/account.component';
 import { contributorsComponent } from './contributors/contributors.component';
@@ -29,6 +36,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { JwtHelperService, JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
+import { FileUploadModule } from 'ng2-file-upload';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -44,7 +52,11 @@ export function tokenGetter() {
       PatternsComponent,
       DashboardComponent,
       AccountComponent,
-      contributorsComponent
+      contributorsComponent,
+      PatternDetailComponent,
+      NewPatternComponent,
+      PhotouploadmodalComponent,
+      ContributorProfileComponent
    ],
    imports: [
       BrowserModule,
@@ -58,6 +70,7 @@ export function tokenGetter() {
       HttpClientModule,
       RouterModule,
       CommonModule,
+      FileUploadModule,
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
          config: {
@@ -74,7 +87,9 @@ export function tokenGetter() {
       AuthGuard,
       UserService,
       PatternService,
-      
+      UserProfileResolver,
+      PatternDetailResolver,
+      UserAccountResolver
    ],
    bootstrap: [
       AppComponent

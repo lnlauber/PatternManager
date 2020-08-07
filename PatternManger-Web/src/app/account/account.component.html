@@ -1,27 +1,40 @@
 <div class="about">
   <div class="profilePhoto">
-    <img src="https://api.adorable.io/avatars/285/abott@adorable.png" alt="Profile Photo">
+    <img src="{{ user?.profilePicture?.url }}" alt="Profile Photo">
   </div>
 
   <div class="about-me">
-    <h1 class="userfullname">{{ user.fullName }}</h1>
-    <p>{{ user.about }}</p>
+    <h1 class="userfullname">{{ user?.fullName }}</h1>
+    <p *ngIf="!editing">{{ user?.about }}</p>
+    <form #editAbout="ngForm" (ngSubmit)="update()" *ngIf="editing">
+      <input class="edit-about" name="about" [(ngModel)]="user.about" type="text">
+      <button type="submit" class="btn">Update</button>
+      <button type="button" class="btn" (click)="cancelEdit()">Cancel</button>
+    </form>
+    <div class="open-upload"  (click)="editPhoto(true)"><h4>Change Profile Picture</h4></div>
+    <div class="edit-profile"  (click)="editProfile(true)"><h4>Edit Profile</h4></div>
   </div>
+</div>
+<div class="photo-upload" *ngIf="changePhoto">
+  <div class="row">
+    <div class="close-upload" (click)="editPhoto(false)">X</div>
+  </div>
+  <app-photouploadmodal [profilePhoto]="true" [pattern]="null" [patternPhoto]="false" (succeeded)="onPhotoUpload()"></app-photouploadmodal>
 </div>
 <div class="settings">
   <div class="table details">
     <table>
       <tr>
         <td>Email</td>
-        <td>{{ user.email }}</td>
+        <td>{{ user?.email }}</td>
       </tr>
       <tr>
         <td>Username</td>
-        <td>{{user.username}}</td>
+        <td>{{user?.username}}</td>
       </tr>
       <tr>
         <td>Member Since</td>
-        <td>{{user.joined}}</td>
+        <td>{{user?.joined}}</td>
       </tr>
     </table>
   </div>

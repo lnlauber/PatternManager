@@ -1,0 +1,7 @@
+select{
+    border-radius: 10px;
+    height: 3rem;
+    padding: .75rem;
+    margin: .5rem;
+    border-color: grey;
+}

@@ -15,5 +15,6 @@ namespace PatternManager.API.Services.UserService
         Task<UserDto> GetUser(string username);
         Task<IEnumerable<UserForProfile>> GetUsers();
         Task<IEnumerable<UserForProfile>> SearchUsers(string search);
+        Task<UserForProfile> UpdateUser(UserForProfile edited);
     }
 }

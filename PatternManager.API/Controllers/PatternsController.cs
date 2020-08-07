@@ -8,7 +8,6 @@ namespace PatternManager.API.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
     public class PatternsController : ControllerBase
     {
         private readonly IPatternService _patternService;
@@ -17,12 +16,20 @@ namespace PatternManager.API.Controllers
             _patternService = patternService;
         }
         [HttpGet]
+        [Route("api/patterns")]
         public async Task<IActionResult> GetAllPatterns(){
             var patterns = await _patternService.GetPatternRecords();
             return Ok(patterns);
         }
+        [HttpGet]
+        [Route("api/pattern")]
+        public async Task<IActionResult> GetPattern(int id){
+            var pattern = await _patternService.GetPattern(id);
+            return Ok(pattern);
+        }
+        
         [HttpPost]
-        [Route("create")]
+        [Route("api/pattern/create")]
         public async Task<IActionResult> CreatePattern(PatternDto pattern){
             await _patternService.CreatePatternRecord(pattern);
             return Ok();

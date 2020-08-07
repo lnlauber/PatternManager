@@ -1,0 +1,70 @@
+<form #registerForm="ngForm" (ngSubmit)="submitPattern()" class="register">
+  <div class="form-section">
+    <label for="title">Title</label>
+    <input type="text" name="title" [(ngModel)]="model.title" placeholder="New Example">
+  </div>
+
+  <div class="form-section">
+    <label for="url">Pattern Url:</label>
+    <input type="text" name="url" [(ngModel)]="model.url" placeholder="https://www.patterns.com/new-pattern">
+  </div>
+
+  <div class="form-section">
+    <label for="category">Category</label>
+    <select name="category" [(ngModel)]="model.category">
+      <option value="accessories">Accessories</option>
+      <option value="clothing">Clothing</option>
+      <option value="home">Home</option>
+      <option value="pet">Pet</option>
+      <option value="toys">Amigurumi/Toys</option>
+    </select>
+  </div>
+
+  <div class="form-section">
+    <label for="yarnWeight">Yarn Weight</label>
+    <select name="yarnWeight" [(ngModel)]="model.yarnWeight">
+      <option value="1">1-Superfine</option>
+      <option value="2">2-Fine</option>
+      <option value="3">3-Light Worsted</option>
+      <option value="4">4-Worsted</option>
+      <option value="5">5-Bulky</option>
+      <option value="6">6-Super Bulky</option>
+      <option value="7">7-Jumbo</option>
+    </select>
+  </div>
+
+  <div class="form-section">
+    <label for="hookSize">Hook Size</label>
+    <select name="hookSize" [(ngModel)]="model.hookSize"> 
+      <option value="2.25">B-1 (2.25mm)</option>
+      <option value="2.75">C-2 (2.75mm)</option>
+      <option value="3.25">D-3 (3.25mm)</option>
+      <option value="3.5">E-4 (3.5mm)</option>
+      <option value="3.75">F-5 (3.75mm)</option>
+      <option value="4">G-6 (4mm)</option>
+      <option value="4.5">7 (4.5mm)</option>
+      <option value="5">H-8 (5mm)</option>
+      <option value="5.5">I-9 (5.5mm)</option>
+      <option value="6">J-10 (6mm)</option>
+      <option value="6.5">K-10.5 (6.5mm)</option>
+      <option value="8">L-11 (8mm)</option>
+      <option value="9">M/N-13 (9mm)</option>
+      <option value="10">N/P-15 (10mm)</option>
+      <option value="12.75">17 (12.75mm)</option>
+      <option value="15">P/Q</option>
+      <option value="16">Q</option>
+      <option value="19">S</option>
+      <option value="25">U-50 (25mm)</option>
+    </select>
+  </div>
+
+  <div class="form-section">
+    <label for="description">Description</label>
+    <input type="text" name="description" [(ngModel)]="model.description" placeholder="A new pattern that makes an great example.">
+  </div>
+
+  <div>
+    <button class="btn" type="submit">Create</button>
+    <button class="btn" type="button" (click)="cancelCreatePattern(false)">Cancel</button>
+  </div>  
+</form>

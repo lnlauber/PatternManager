@@ -1,6 +1,6 @@
-import { AlertifyService } from './../../_services/Alertify.service';
-import { PatternService } from './../../_services/Pattern.service';
-import { Pattern } from './../../models/pattern';
+import { AlertifyService } from './../../../_services/Alertify.service';
+import { PatternService } from './../../../_services/Pattern.service';
+import { Pattern } from './../../../models/pattern';
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -12,13 +12,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class PatternsComponent implements OnInit {
 
   creatingPattern: boolean;
-  user = this.jwtHelper.decodeToken(localStorage.getItem('token')).nameid;
-  model: Pattern = {
-    url: '',
-    title: '',
-    contributer: this.user,
-    description: '',
-  };
+
   patterns: Pattern[];
   constructor(private patternService: PatternService,
               private alertify: AlertifyService,
@@ -32,22 +26,13 @@ export class PatternsComponent implements OnInit {
     this.patternService.get().subscribe((patterns: Pattern[]) => {
       this.patterns = patterns;
     }, error => {
+      console.log(error);
       this.alertify.error(error);
     });
   }
   createPattern(){
     this.creatingPattern = !this.creatingPattern;
   }
-  submitPattern(){
-    console.log(this.model);
 
-    this.patternService.create(this.model).subscribe(() => {
-      this.alertify.success('Pattern Created Successfully.');
-    }, error => {
-      this.alertify.error(error);
-    });
-    this.creatingPattern = false;
-
-  }
 
 }

@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using PatternManager.API.Services.PatternService;
 using AutoMapper;
+using PatternManager.API.Services.PhotoService;
 
 namespace PatternManager.API
 {
@@ -28,9 +29,14 @@ namespace PatternManager.API
 
         public IConfiguration Configuration { get; }
 
+        public void ConfigureProductionServices(IServiceCollection services){
+            
+            ConfigureServices(services);
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers().AddNewtonsoftJson();
             services.AddCors();
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
@@ -48,9 +54,9 @@ namespace PatternManager.API
             services.AddScoped<IUnitOfWork, DataContext>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPatternService, PatternService>();
+            services.AddScoped<IPhotoService, PhotoService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -70,19 +76,21 @@ namespace PatternManager.API
                     });
                 });
             }
-
-            //app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }

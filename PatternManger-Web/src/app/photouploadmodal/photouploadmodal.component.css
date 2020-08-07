@@ -1,0 +1,29 @@
+.photo-upload-modal{
+    background-color: whitesmoke;
+    z-index: 4000;
+}
+
+.upload-div{
+    max-height: 60vh;
+    margin-top: 1rem;
+}
+.well{
+    background-color: transparent;
+    min-width: 100%;
+    min-height: 4rem;
+    border: solid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+}
+input[type='file'] {
+    color: transparent;
+    height: 3.5rem;
+    padding-left: 25%;
+}
+::-webkit-file-upload-button{
+    border-radius: 15px;
+    border-bottom: solid;
+    height: 2.5rem;
+}

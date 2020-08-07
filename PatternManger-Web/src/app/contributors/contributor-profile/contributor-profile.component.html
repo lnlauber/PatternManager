@@ -1,0 +1,28 @@
+<div class="about">
+  <div class="profilePhoto">
+    <img src="{{ user?.profilePicture?.url }}" alt="Profile Photo">
+  </div>
+
+  <div class="about-me">
+    <h1 class="userfullname">{{ user?.fullName }}</h1>
+    <p>{{ user?.about }}</p>
+  </div>
+</div>
+<div class="settings">
+  <div class="table details">
+    <table>
+      <tr>
+        <td>Email</td>
+        <td>{{ user?.email }}</td>
+      </tr>
+      <tr>
+        <td>Username</td>
+        <td>{{user?.username}}</td>
+      </tr>
+      <tr>
+        <td>Member Since</td>
+        <td>{{user?.joined}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

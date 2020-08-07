@@ -16,8 +16,10 @@ constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl);
   }
-  getUser(username: string): Observable<User> {
-    return this.http.get<User>(this.baseUrl + username);
+  
+  getUser(username: string) {
+    const currentUrl = 'current?username=';
+    return this.http.get(this.baseUrl + currentUrl + username);
   }
 
   getCurrentUser(){
@@ -30,5 +32,9 @@ constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
     const searchUrl = 'search?searched=';
     return this.http.get<User[]>(this.baseUrl + searchUrl + searched);
   }
+  updateAboutUser(user: User){
+    return this.http.post(this.baseUrl+ 'updateUser', user);
+  }
+
 
 }

@@ -14,4 +14,10 @@
     margin: 0 auto;
     color: white;
 }
+a{
+    color: $accent-color;
+}
+a:hover{
+    text-decoration: none;
+}
 

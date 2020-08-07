@@ -16,23 +16,39 @@ namespace PatternManager.API.Controllers
         {
             _userService = userService;
         }
+        
         [HttpGet]
         [Route("/users")]
         public async Task<IActionResult> GetUsers(){
             var users = await _userService.GetUsers();
             return Ok(users);
         }
+
+
         [HttpGet]
         [Route("/users/search")]
         public async Task<IActionResult> SearchUsers(string searched){
             var users = await _userService.SearchUsers(searched);
             return Ok(users);
         }
+
+
         [HttpGet]
         [Route("/users/current")]
         public async Task<IActionResult> GetCurrentUser(string username){
             var user = await _userService.GetCurrentUser(username);
             return Ok(user);
         }
+
+        [HttpPost]
+        [Route("/users/updateUser")]
+        public async Task<IActionResult> UpdateUser(UserForProfile edited){
+            var user = await _userService.UpdateUser(edited);
+            return Ok(user);
+        }
+        
+
+
+
     }
 }

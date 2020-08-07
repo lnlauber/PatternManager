@@ -1,14 +1,14 @@
-<div class="filters">
+<!-- <div class="filters">
   <form #searchUsers="ngForm" (ngSubmit)="search()">
     <div>
       <input class="designer-search" type="text" [(ngModel)]="contributor" name="contributor">
       <button class="designer-search" type="submit" class="btn">Search</button>
     </div>
   </form>
-</div>
+</div> -->
 <div class="gallery">
-  <div class="designer-result" *ngFor="let user of users">
-      <img class="designer-image" src="https://picsum.photos/200/300" alt="">
+  <div class="designer-result" [routerLink]="['/home/contributors/', user.username]" routerLinkActive="router-link-active" *ngFor="let user of users">
+      <img class="designer-image" src="{{ user.profilePicture?.url }}" alt="">
       <div class="designer-details">
         <h4>{{ user.fullName }}</h4>
         <p>User since: {{ user.joined }}</p>
